@@ -62,11 +62,11 @@ cd LinkedIn-Company-Data-Scraping-System
 python3 -m venv venv
 ```
 - Activate the virtual environment:
-  - On Linux/macOS:
+On Linux/macOS:
 ```bash
 source venv/bin/activate
 ```
-  - On Windows:
+On Windows:
 ```bash
 venv\Scripts\activate
 ```
