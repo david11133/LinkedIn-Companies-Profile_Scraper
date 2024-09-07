@@ -2,6 +2,9 @@ import json
 import scrapy
 from scrapy.http import Request
 import re
+from scrapy.utils.project import get_project_settings
+import random
+import time
 
 input_file = 'companies2.json'
 company_urls = []
@@ -29,6 +32,9 @@ class CompanyProfileScraperSpider(scrapy.Spider):
     custom_settings = {
         'LOG_LEVEL': 'DEBUG',  # Set logging level to DEBUG to capture detailed logs
         'LOG_FILE': 'scrapy_debug.log',  # Log output will be saved in this file
+        'DOWNLOAD_DELAY': 2,  # Delay in seconds between requests
+        'DOWNLOAD_DELAY_VARIATION': 1,  # Variation in the delay to make it more unpredictable
+        'CONCURRENT_REQUESTS': 1,  # Number of concurrent requests (can be adjusted based on your needs)
     }
 
     def start_requests(self):
@@ -43,6 +49,14 @@ class CompanyProfileScraperSpider(scrapy.Spider):
             yield Request(url=url, callback=self.parse_response,
                           errback=self.handle_error,
                           meta={'company_index_tracker': index})
+            # Adding a delay between requests
+            delay = self.get_download_delay()
+            self.logger.info(f"Sleeping for {delay} seconds")
+            time.sleep(delay)
+
+    def get_download_delay(self):
+        """Return a random download delay within the specified range."""
+        return self.settings.get('DOWNLOAD_DELAY') + random.uniform(0, self.settings.get('DOWNLOAD_DELAY_VARIATION'))
 
     def parse_response(self, response):
         company_index_tracker = response.meta['company_index_tracker']
