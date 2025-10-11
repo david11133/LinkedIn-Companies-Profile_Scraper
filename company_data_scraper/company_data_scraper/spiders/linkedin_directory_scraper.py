@@ -16,7 +16,6 @@ class LinkedinDirectoryScraperSpider(scrapy.Spider):
                         'https://webcache.googleusercontent.com/search?q=cache:https://www.linkedin.com/directory/companies/g?trk=companies_directory_letter_nav',
                         'https://webcache.googleusercontent.com/search?q=cache:https://www.linkedin.com/directory/companies/h?trk=companies_directory_letter_nav',
                         'https://webcache.googleusercontent.com/search?q=cache:https://www.linkedin.com/directory/companies/i?trk=companies_directory_letter_nav',
-                        'https://webcache.googleusercontent.com/search?q=cache:https://www.linkedin.com/directory/companies/j?trk=companies_directory_letter_nav',
                         'https://webcache.googleusercontent.com/search?q=cache:https://www.linkedin.com/directory/companies/k?trk=companies_directory_letter_nav',
                         'https://webcache.googleusercontent.com/search?q=cache:https://www.linkedin.com/directory/companies/l?trk=companies_directory_letter_nav',
                         'https://webcache.googleusercontent.com/search?q=cache:https://www.linkedin.com/directory/companies/m?trk=companies_directory_letter_nav',
